@@ -1,0 +1,524 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ===== JAN SPANDAN WARM IVORY PALETTE ===== */
+    --ivory-base: #F8F4EC;
+    --ivory-warm: #F5EEDC;
+    --ivory-light: #FFFDF8;
+    --ivory-deep: #EDE2CF;
+    --beige: #E8DABB;
+    --golden-glow: #F0C97A;
+    --golden-light: #FBE9B0;
+
+    /* Brand Colors (deepened for contrast on light bg) */
+    --saffron: #C8601A;
+    --saffron-mid: #D97B2B;
+    --saffron-light: #F4A94A;
+    --saffron-pale: #FDE8C8;
+    --india-green: #1A6B1A;
+    --india-green-light: #2E8B2E;
+    --india-green-pale: #D6EDD6;
+    --navy: #1A237E;
+    --navy-mid: #283593;
+    --navy-pale: #E8EAF6;
+
+    /* Text */
+    --text-primary: #2C2010;
+    --text-secondary: #6B5A3E;
+    --text-muted: #9C876A;
+    --text-link: #C8601A;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--ivory-base);
+    color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  .font-devanagari {
+    font-family: var(--font-devanagari), serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--ivory-warm);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #C8601A, #1A6B1A);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+
+  /* ===================== GLASS / WARM CARDS ===================== */
+  .glass-card {
+    background: rgba(255, 253, 248, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(200, 160, 80, 0.2);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(180, 130, 60, 0.08);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 253, 248, 0.98);
+    border-color: rgba(200, 96, 26, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(180, 130, 60, 0.15), 0 0 0 1px rgba(200, 96, 26, 0.08);
+  }
+
+  .glass-card-premium {
+    background: linear-gradient(135deg, rgba(200,96,26,0.06) 0%, rgba(26,107,26,0.04) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(200, 96, 26, 0.15);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(180, 130, 60, 0.1);
+  }
+
+  /* Warm card variant used across dashboards */
+  .card-warm {
+    background: #FFFDF8;
+    border: 1px solid rgba(200, 160, 80, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(180, 130, 60, 0.07);
+    transition: all 0.3s ease;
+  }
+
+  .card-warm:hover {
+    border-color: rgba(200, 96, 26, 0.25);
+    box-shadow: 0 8px 24px rgba(180, 130, 60, 0.13);
+    transform: translateY(-2px);
+  }
+
+  /* ===================== BUTTONS ===================== */
+  .btn-primary {
+    background: linear-gradient(135deg, #C8601A 0%, #A84E12 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 16px rgba(200, 96, 26, 0.30);
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(200, 96, 26, 0.45);
+    background: linear-gradient(135deg, #D97B2B 0%, #C8601A 100%);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(200, 96, 26, 0.25);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 253, 248, 0.9);
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.625rem;
+    border: 1.5px solid rgba(200, 160, 80, 0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover {
+    background: #FFF9EE;
+    border-color: rgba(200, 96, 26, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(180, 130, 60, 0.12);
+  }
+
+  .btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ===================== INPUTS ===================== */
+  .input-field {
+    width: 100%;
+    background: #FFFDF8;
+    border: 1.5px solid rgba(200, 160, 80, 0.3);
+    border-radius: 0.625rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .input-field:focus {
+    border-color: #C8601A;
+    box-shadow: 0 0 0 3px rgba(200, 96, 26, 0.10);
+    background: white;
+  }
+
+  /* ===================== GRADIENT TEXT ===================== */
+  .gradient-text {
+    background: linear-gradient(135deg, #C8601A 0%, #D97B2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-green {
+    background: linear-gradient(135deg, #1A6B1A, #2E8B2E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, #1A237E, #3949AB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: linear-gradient(135deg, #B8860B, #D4A017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===================== BADGES ===================== */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .badge-open {
+    background: rgba(200, 60, 60, 0.1);
+    color: #B02020;
+    border: 1px solid rgba(200, 60, 60, 0.2);
+  }
+
+  .badge-in_progress {
+    background: rgba(180, 120, 10, 0.1);
+    color: #8B6310;
+    border: 1px solid rgba(180, 120, 10, 0.2);
+  }
+
+  .badge-resolved {
+    background: rgba(26, 107, 26, 0.1);
+    color: #1A6B1A;
+    border: 1px solid rgba(26, 107, 26, 0.2);
+  }
+
+  .badge-closed {
+    background: rgba(100, 90, 80, 0.1);
+    color: #6B5A3E;
+    border: 1px solid rgba(100, 90, 80, 0.2);
+  }
+
+  /* ===================== SIDEBAR ===================== */
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.625rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+
+  .sidebar-link:hover {
+    color: var(--text-primary);
+    background: rgba(200, 96, 26, 0.06);
+    border-color: rgba(200, 96, 26, 0.1);
+  }
+
+  .sidebar-link.active {
+    color: #C8601A;
+    background: rgba(200, 96, 26, 0.09);
+    border-color: rgba(200, 96, 26, 0.2);
+    box-shadow: inset 3px 0 0 #C8601A;
+  }
+
+  /* ===================== STAT CARDS ===================== */
+  .stat-card {
+    background: #FFFDF8;
+    border: 1px solid rgba(200, 160, 80, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(180, 130, 60, 0.06);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(200, 96, 26, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .stat-card:hover::before {
+    opacity: 1;
+  }
+
+  .stat-card:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(180, 130, 60, 0.13);
+    border-color: rgba(200, 96, 26, 0.2);
+  }
+
+  /* ===================== HERO BACKGROUND ===================== */
+  .hero-bg {
+    background:
+      linear-gradient(180deg, #FFFDF8 0%, #F8F4EC 50%, #F5EEDC 100%);
+  }
+
+  /* ===================== SECTION ALTERNATES ===================== */
+  .section-alt {
+    background: linear-gradient(180deg, #F5EEDC 0%, #EDE2CF 100%);
+  }
+
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(200, 96, 26, 0.25), 0 0 30px rgba(200, 96, 26, 0.08); }
+    50% { box-shadow: 0 0 30px rgba(200, 96, 26, 0.45), 0 0 60px rgba(200, 96, 26, 0.15); }
+  }
+
+  .glow-saffron {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, rgba(200,160,80,0.04) 0%, rgba(200,160,80,0.12) 50%, rgba(200,160,80,0.04) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-up {
+    animation: slide-up 0.5s ease forwards;
+  }
+
+  @keyframes gentle-rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gentle-rise {
+    animation: gentle-rise 0.6s ease forwards;
+  }
+
+  /* ===================== TRICOLOR ===================== */
+  .tricolor-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #FF9933 33.33%, #FFFFFF 33.33% 66.66%, #138808 66.66%);
+    border-radius: 9999px;
+  }
+
+  .tricolor-bar-vertical {
+    width: 3px;
+    background: linear-gradient(180deg, #FF9933 33.33%, #FFFFFF 33.33% 66.66%, #138808 66.66%);
+    border-radius: 9999px;
+  }
+
+  /* ===================== LOADING ===================== */
+  .spinner {
+    border: 2px solid rgba(200, 96, 26, 0.15);
+    border-top-color: #C8601A;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ===================== MISC ===================== */
+  .section-divider {
+    background: linear-gradient(90deg, transparent, rgba(200, 96, 26, 0.3), transparent);
+    height: 1px;
+    width: 100%;
+    margin: 4rem 0;
+  }
+
+  /* Mandala decorative pattern — lighter for ivory bg */
+  .mandala-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23C8601A' stroke-width='0.5' fill='none' opacity='0.25'/%3E%3Ccircle cx='50' cy='50' r='25' stroke='%23C8601A' stroke-width='0.5' fill='none' opacity='0.25'/%3E%3Ccircle cx='50' cy='50' r='10' stroke='%23C8601A' stroke-width='0.5' fill='none' opacity='0.25'/%3E%3C/svg%3E");
+    background-size: 100px 100px;
+  }
+
+  /* Indian pattern overlay — warm dots */
+  .pattern-overlay {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(200,96,26,0.02) 0px,
+      rgba(200,96,26,0.02) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+
+  /* Card hover glow */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(200, 96, 26, 0.10), 0 12px 32px rgba(180, 130, 60, 0.12);
+  }
+
+  /* Number stat display */
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #C8601A, #D97B2B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Role badge pill */
+  .role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .role-pill-citizen {
+    background: rgba(200, 96, 26, 0.10);
+    color: #C8601A;
+    border: 1px solid rgba(200, 96, 26, 0.25);
+  }
+
+  .role-pill-officer {
+    background: rgba(26, 35, 126, 0.08);
+    color: #1A237E;
+    border: 1px solid rgba(26, 35, 126, 0.2);
+  }
+
+  .role-pill-supervisor {
+    background: rgba(74, 20, 140, 0.08);
+    color: #4A148C;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+  }
+
+  .role-pill-admin {
+    background: rgba(183, 28, 28, 0.08);
+    color: #B71C1C;
+    border: 1px solid rgba(183, 28, 28, 0.2);
+  }
+
+  /* Dashboard page header */
+  .page-header {
+    background: linear-gradient(135deg, rgba(200, 96, 26, 0.05) 0%, transparent 60%);
+    border-bottom: 1px solid rgba(200, 160, 80, 0.2);
+    padding: 1.5rem 2rem;
+  }
+
+  /* Interactive table row */
+  .table-row {
+    border-bottom: 1px solid rgba(200, 160, 80, 0.12);
+    transition: background 0.2s;
+  }
+
+  .table-row:hover {
+    background: rgba(200, 96, 26, 0.03);
+  }
+
+  /* ===================== DEVANAGARI PULL QUOTE ===================== */
+  .hindi-quote {
+    font-family: var(--font-devanagari), serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--saffron);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  .hindi-sub {
+    font-family: var(--font-devanagari), serif;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+  }
+
+  /* ===================== WARM BORDER SEPARATOR ===================== */
+  .warm-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 160, 80, 0.4), transparent);
+    margin: 2rem 0;
+  }
+}
